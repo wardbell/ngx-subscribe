@@ -1,0 +1,44 @@
+<h1>NgxSubscribe Demo</h1>
+
+<h3>A single observable</h3>
+<code>*ngxSubscribe="interval$ as data"</code>
+<p *ngxSubscribe="interval$ as data">
+  {{data}}
+</p>
+
+<h3>Array of observables</h3>
+<code>*ngxSubscribe="[interval$, interval2$] as data"</code>
+<div *ngxSubscribe="[interval$, interval2$] as data">
+	<p >
+		{{data[0]}}, {{data[1]}}
+	</p>
+	
+	<p>
+		<button type="button" (click)="show = !show">toggle</button>
+	</p>
+	<p *ngIf="show"><b>Interval2: {{data[1]}}</b></p>
+</div>
+
+<h3>Object with some observable properties</h3>
+<code>*ngxSubscribe="data as data2"</code>
+<p *ngxSubscribe="data as data2">
+	{{data2.interval}},
+  {{data2.name}},
+  {{data2.interval2}}
+</p>
+<button (click)="toggleName()">toggle name</button>
+<p><i>Note that the original name is frozen even as we toggle it: "{{data.name}}"".</i></p>
+
+<h3>No ngxSubscribe value</h3>
+<code>*ngxSubscribe</code>
+<p *ngxSubscribe>
+  <i>... nothing ...</i>
+</p>
+
+<hr>
+
+<p>
+	Thanks Natanel Basel for your article and the original code,
+	"<a href="https://netbasal.com/diy-subscription-handling-directive-in-angular-c8f6e762697f" 
+	target="_blank">DIY Subscription Handling Directive in Angular</a>"."
+</p>
